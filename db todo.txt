@@ -1,0 +1,2 @@
+flask db migrate -m "" //generates a migration script
+flask db upgrade //actually upgrades db

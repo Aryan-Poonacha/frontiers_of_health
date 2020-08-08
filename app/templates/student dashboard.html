@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+<!-- Start Feautes -->
+		<section class="Feautes section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>Student Dashboard</h2>
+							<img src="{{ url_for('static', filename='img/section-img.png') }}" alt="#">
+							<p>Welcome to your student dashboard, {{ student.username }}!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Feautes -->
+
+		<br>
+		<br>
+		<br>
+		<br>
+<!-- Start Schedule Area -->
+
+		<section class="schedule">
+			<div class="container">
+
+				<div class="schedule-inner">
+					<div class="row">
+						<div class="col-lg-4 col-md-6 col-12 ">
+							<!-- single-schedule -->
+							<div class="single-schedule first">
+								<div class="inner">
+									<div class="icon">
+										<i class="icofont-prescription"></i>
+									</div>
+									<div class="single-content">
+
+										{% if student.active == True %}
+
+										<span>Continue Therapy</span>
+										<h4>Resume Session</h4>
+										<p>Sends a start session request to your current therapist.</p>
+										<p>If your primary therapist isn't currently available, matches you with the best currently available therapists for your profile.</p>
+										<a href="#">START SESSION<i class="fa fa-long-arrow-right"></i></a>
+
+										{% else %}
+
+										<span>Start Therapy</span>
+										<h4>Start First Session</h4>
+										<p>Once you've matched with a therapist, you will be able to start sessions with them here.</p>
+										<p>You still need to match with a therapist before you can start your session.</p>
+										<p>Click below to start the matching process!</p>
+										<a href="#">Find Match<i class="fa fa-long-arrow-right"></i></a>
+
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 col-12">
+							<!-- single-schedule -->
+							<div class="single-schedule middle">
+								<div class="inner">
+									<div class="icon">
+										<i class="fa fa-ambulance"></i>
+									</div>
+									<div class="single-content">
+
+										{% if student.active == True %}
+
+										<span>Cancel Current Match</span>
+										<h4>End/Terminate your current matched therapist.</h4>
+										<p>After cancelling, you may choose to rematch with a new therapist if you still wish to continue with therapy sessions.</p>
+										<p> When rematching, you will also have the option to rematch with any therapists you have had and cancelled before.<p>
+										<a href="{{ url_for('student_cancel_match_form') }}">End Match<i class="fa fa-long-arrow-right"></i></a>
+
+										{% else %}
+
+										<span>Find New Match</span>
+										<h4>Find A New Therapist</h4>
+										<p>Fill out a form to find the most suitable therapists at our disposal for you.</p>
+										<p> We will show you the top three matches based on the form data and your student profile to choose from.<p>
+										<a href="{{ url_for('student_match_form') }}">Find Match<i class="fa fa-long-arrow-right"></i></a>
+
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-12 col-12">
+							<!-- single-schedule -->
+							<div class="single-schedule last">
+								<div class="inner">
+									<div class="icon">
+										<i class="icofont-ui-clock"></i>
+									</div>
+									<div class="single-content">
+										<span>View History</span>
+										<h4>Session History</h4>
+										<ul class="time-sidual">
+											<li class="day">View details from your previous sessions.</li>
+											<li class="day">View information about your previous therapists.</li>
+										</ul>
+										<a href="#">View Details<i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/End Start schedule Area -->
+
+		{% include "footer.html" %}
+
+{% endblock %}
